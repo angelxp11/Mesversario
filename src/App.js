@@ -8,7 +8,7 @@ function App() {
       {hearts}
       <header className="App-header">
         <p className="custom-message">
-          Lo logré, esposita mía, te amo mucho
+          Lo logré, esposita mía, gracias a ti y te lo agradezco mucho, te amo mucho
         </p>
       </header>
     </div>
