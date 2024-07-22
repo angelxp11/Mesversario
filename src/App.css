@@ -1,38 +1,139 @@
+/* App.css */
+
 .App {
   text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffe4e1;
+  position: relative;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.custom-message {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 3em;
+  color: #ff69b4;
+  position: relative;
+  z-index: 1;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  z-index: 1;
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.heart {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: pink;
+  animation: zoomIn 5s infinite;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: pink;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -25px;
+  left: 0;
+}
+
+.heart::after {
+  left: 25px;
+  top: 0;
+}
+
+/* Positioning and rotating hearts around the message */
+.heart:nth-child(1) {
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  animation-delay: 0s;
+}
+
+.heart:nth-child(2) {
+  top: 20%;
+  left: 70%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  animation-delay: 2s;
+}
+
+.heart:nth-child(3) {
+  top: 40%;
+  left: 90%;
+  transform: translate(-50%, -50%) rotate(135deg);
+  animation-delay: 4s;
+}
+
+.heart:nth-child(4) {
+  top: 60%;
+  left: 90%;
+  transform: translate(-50%, -50%) rotate(180deg);
+  animation-delay: 1s;
+}
+
+.heart:nth-child(5) {
+  top: 80%;
+  left: 70%;
+  transform: translate(-50%, -50%) rotate(225deg);
+  animation-delay: 3s;
+}
+
+.heart:nth-child(6) {
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(270deg);
+  animation-delay: 1.5s;
+}
+
+.heart:nth-child(7) {
+  top: 80%;
+  left: 30%;
+  transform: translate(-50%, -50%) rotate(315deg);
+  animation-delay: 3.5s;
+}
+
+.heart:nth-child(8) {
+  top: 60%;
+  left: 10%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation-delay: 0.5s;
+}
+
+.heart:nth-child(9) {
+  top: 40%;
+  left: 10%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  animation-delay: 2.5s;
+}
+
+.heart:nth-child(10) {
+  top: 20%;
+  left: 30%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  animation-delay: 4.5s;
 }

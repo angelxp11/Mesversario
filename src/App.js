@@ -1,22 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const hearts = Array.from({ length: 10 }, (_, i) => <div key={i} className="heart"></div>);
+
   return (
     <div className="App">
+      {hearts}
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          AJUAAAAAAA MI PRIMERA APPXD
+        <p className="custom-message">
+          Lo logré, esposita mía, te amo mucho
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
