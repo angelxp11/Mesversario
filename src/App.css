@@ -4,23 +4,34 @@
   text-align: center;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ffe4e1;
+  background: linear-gradient(135deg, #ff69b4, #e16dab);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
   position: relative;
   overflow: hidden;
 }
 
 .custom-message {
-  font-family: 'Brush Script MT', cursive;
-  font-size: 3em;
-  color: #ff69b4;
+  font-family: 'Georgia', serif;
+  font-size: 30px;
+  color: #ffffff;
   position: relative;
   z-index: 1;
+  margin-top: 20px;
+  opacity: 0; /* Inicialmente invisible */
+  animation: fadeIn 1s forwards; /* Animación de desvanecimiento */
 }
 
 .App-header {
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0; /* Inicialmente invisible */
+  animation: fadeIn 1s forwards; /* Animación de desvanecimiento */
 }
 
 @keyframes zoomIn {
@@ -37,11 +48,118 @@
   }
 }
 
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px); /* Puede ajustar la distancia */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.animated-heading {
+  display: inline-block;
+  font-family: 'Arial', sans-serif;
+  font-size: 45px;
+  color: #ffffff;
+  position: relative;
+}
+
+@keyframes waveAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animated-heading span {
+  display: inline-block;
+  animation: waveAnimation 1s ease-in-out infinite;
+}
+
+.animated-heading span:nth-child(odd) {
+  animation-delay: 0s;
+}
+
+.animated-heading span:nth-child(even) {
+  animation-delay: 0.1s;
+}
+
+.audio-player {
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+  opacity: 1; /* Siempre visible */
+}
+
+.media-container {
+  margin-top: 2px;
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  position: relative;
+  border-color: #d8bfd8;
+  border-radius: 20px; /* Ajusta el valor para el radio del borde */
+  overflow: hidden;
+  opacity: 0; /* Inicialmente invisible */
+  animation: fadeIn 1s forwards; /* Animación de desvanecimiento */
+}
+
+.media-container img {
+  width: 300px; /* 50% más pequeño que 600px */
+  height: 300px; /* 50% más pequeño que 600px */
+  object-fit: cover;
+  border-color: #d8bfd8;
+  display: block;
+  margin: 0 auto; /* Centrar imagen horizontalmente */
+  border-radius: 20px; /* Ajusta el valor para el radio del borde */
+}
+
+.media-container video {
+  width: 600px;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto; /* Centrar video horizontalmente */
+}
+
+
 .heart {
   position: absolute;
   width: 50px;
   height: 50px;
-  background-color: pink;
+  background-color: #d8bfd8;
   animation: zoomIn 5s infinite;
   opacity: 0;
   transform: translate(-50%, -50%);
@@ -53,7 +171,7 @@
   position: absolute;
   width: 50px;
   height: 50px;
-  background-color: pink;
+  background-color: #d8bfd8;
   border-radius: 50%;
 }
 
@@ -62,78 +180,144 @@
   left: 0;
 }
 
-.heart::after {
-  left: 25px;
-  top: 0;
-}
-
-/* Positioning and rotating hearts around the message */
+/* Corazones en la mitad izquierda, apuntando a la derecha */
 .heart:nth-child(1) {
   top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
+  left: 25%;
+  transform: translate(-50%, -50%) rotate(-45deg);
   animation-delay: 0s;
 }
 
 .heart:nth-child(2) {
   top: 20%;
-  left: 70%;
-  transform: translate(-50%, -50%) rotate(90deg);
+  left: 30%;
+  transform: translate(-50%, -50%) rotate(-90deg);
   animation-delay: 2s;
 }
 
 .heart:nth-child(3) {
   top: 40%;
-  left: 90%;
-  transform: translate(-50%, -50%) rotate(135deg);
+  left: 40%;
+  transform: translate(-50%, -50%) rotate(-135deg);
   animation-delay: 4s;
 }
 
 .heart:nth-child(4) {
   top: 60%;
-  left: 90%;
-  transform: translate(-50%, -50%) rotate(180deg);
+  left: 40%;
+  transform: translate(-50%, -50%) rotate(-180deg);
   animation-delay: 1s;
 }
 
 .heart:nth-child(5) {
   top: 80%;
-  left: 70%;
-  transform: translate(-50%, -50%) rotate(225deg);
+  left: 30%;
+  transform: translate(-50%, -50%) rotate(-225deg);
   animation-delay: 3s;
 }
 
+.heart:nth-child(1)::after,
+.heart:nth-child(2)::after,
+.heart:nth-child(3)::after,
+.heart:nth-child(4)::after,
+.heart:nth-child(5)::after {
+  left: -25px;
+  top: 0;
+}
+
+/* Corazones en la mitad derecha, apuntando a la izquierda */
 .heart:nth-child(6) {
   top: 90%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(270deg);
+  left: 75%;
+  transform: translate(-50%, -50%) rotate(45deg);
   animation-delay: 1.5s;
 }
 
 .heart:nth-child(7) {
   top: 80%;
-  left: 30%;
-  transform: translate(-50%, -50%) rotate(315deg);
+  left: 70%;
+  transform: translate(-50%, -50%) rotate(90deg);
   animation-delay: 3.5s;
 }
 
 .heart:nth-child(8) {
   top: 60%;
-  left: 10%;
-  transform: translate(-50%, -50%) rotate(0deg);
+  left: 90%;
+  transform: translate(-50%, -50%) rotate(135deg);
   animation-delay: 0.5s;
 }
 
 .heart:nth-child(9) {
   top: 40%;
-  left: 10%;
-  transform: translate(-50%, -50%) rotate(45deg);
+  left: 90%;
+  transform: translate(-50%, -50%) rotate(180deg);
   animation-delay: 2.5s;
 }
 
 .heart:nth-child(10) {
   top: 20%;
-  left: 30%;
-  transform: translate(-50%, -50%) rotate(90deg);
+  left: 75%;
+  transform: translate(-50%, -50%) rotate(225deg);
   animation-delay: 4.5s;
+}
+
+.heart:nth-child(6)::after,
+.heart:nth-child(7)::after,
+.heart:nth-child(8)::after,
+.heart:nth-child(9)::after,
+.heart:nth-child(10)::after {
+  left: 25px;
+  top: 0;
+}
+
+
+
+
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Estilos para elementos visibles con animación */
+.visible {
+  animation: fadeIn 1s forwards;
+}
+
+/* Estilos para elementos invisibles con animación */
+.invisible {
+  animation: fadeOut 0.000000001s forwards;
+}
+
+/* Estilos para los elementos visibles e invisibles */
+.App-header.visible,
+.media-container.visible {
+  opacity: 1;
+}
+
+.App-header.invisible,
+.media-container.invisible {
+  opacity: 0;
+}
+
+
+.audio-player {
+  position: absolute; /* Cambia a absolute para centrar */
+  bottom: 50%; /* Ajusta el margen inferior */
+  left: 50%; /* Ajusta el margen izquierdo */
+  transform: translateX(-50%); /* Centra horizontalmente */
+  opacity: 1; /* Visible por defecto, controla con JavaScript */
 }
